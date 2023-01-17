@@ -28,4 +28,10 @@ public class TacosController {
         tacosListUseCase.addTacos(t);
         return new RedirectView("/");
     }
+    @RequestMapping(value = "/deletetacos/{id}", method = {RequestMethod.GET, RequestMethod.DELETE})
+    @ResponseBody
+    public RedirectView deleteTacos(@PathVariable("id") int id){
+        tacosListUseCase.deleteTacos(id);
+        return new RedirectView("/");
+    }
 }
