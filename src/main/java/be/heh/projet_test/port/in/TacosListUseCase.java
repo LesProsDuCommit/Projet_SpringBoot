@@ -9,4 +9,6 @@ import java.util.List;
 @Service
 public interface TacosListUseCase {
     List<Tacos> getTacosList();
+    void addTacos(Tacos t);
+    void deleteTacos(int id);
 }
