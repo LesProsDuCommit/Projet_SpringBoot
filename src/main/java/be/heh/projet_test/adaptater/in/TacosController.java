@@ -21,4 +21,11 @@ public class TacosController {
         model.addAttribute("tacos", tacos);
         return "index";
     }
+    @RequestMapping(value="/addTacos", method= RequestMethod.POST)
+    @ResponseBody
+    public RedirectView addTacos(@ModelAttribute("addTacos") Tacos tacos) throws Exception {
+        Tacos t = new Tacos(tacos.getId(), tacos.getNom(), tacos.getTaille(), tacos.getViande(), tacos.getSauce(), tacos.getSupp(), tacos.getPrix());
+        tacosListUseCase.addTacos(t);
+        return new RedirectView("/");
+    }
 }
