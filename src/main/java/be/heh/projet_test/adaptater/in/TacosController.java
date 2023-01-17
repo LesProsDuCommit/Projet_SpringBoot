@@ -12,7 +12,6 @@ import java.util.List;
 @Controller
 @RequiredArgsConstructor
 public class TacosController {
-
     private final TacosListUseCase tacosListUseCase;
     private List<Tacos> tacos;
 
@@ -22,5 +21,4 @@ public class TacosController {
         model.addAttribute("tacos", tacos);
         return "index";
     }
-
 }
