@@ -18,4 +18,9 @@ public class TacosPersistanceAdapter implements TacosListUseCase {
         List<TacosJpaEntity> tacosEntity = tacosRepository.findAll();
         return tacosMapper.mapToDomainEntity(tacosEntity);
     }
+    @Override
+    public void addTacos(Tacos t) {
+        TacosJpaEntity tacos = new TacosJpaEntity(t.getId(), t.getNom(), t.getTaille(), t.getViande(), t.getSauce(), t.getSupp(), t.getPrix());
+        tacosRepository.save(tacos);
+    }
 }
