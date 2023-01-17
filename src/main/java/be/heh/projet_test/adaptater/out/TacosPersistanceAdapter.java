@@ -27,6 +27,7 @@ public class TacosPersistanceAdapter implements TacosListUseCase {
     public void deleteTacos(int id) {
         tacosRepository.deleteById(id);
     }
+<<<<<<< HEAD
 
     @Override
     public Tacos getTacosById(int id) {
@@ -46,4 +47,6 @@ public class TacosPersistanceAdapter implements TacosListUseCase {
         tacos.setPrix(t.getPrix());
         tacosRepository.save(tacos);
     }
+=======
+>>>>>>> c939e8b192154d44568e9bfaff9f213181afbe09
 }

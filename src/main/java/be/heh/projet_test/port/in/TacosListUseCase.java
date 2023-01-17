@@ -11,6 +11,9 @@ public interface TacosListUseCase {
     List<Tacos> getTacosList();
     void addTacos(Tacos t);
     void deleteTacos(int id);
+<<<<<<< HEAD
     Tacos getTacosById(int id);
     void updateTacos(Tacos t);
+=======
+>>>>>>> c939e8b192154d44568e9bfaff9f213181afbe09
 }

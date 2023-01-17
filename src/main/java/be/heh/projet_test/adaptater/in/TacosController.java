@@ -36,6 +36,7 @@ public class TacosController {
         tacosListUseCase.deleteTacos(id);
         return new RedirectView("/");
     }
+<<<<<<< HEAD
 
     @GetMapping("/updatetacos/{id}")
     @ResponseBody
@@ -55,4 +56,6 @@ public class TacosController {
         tacosListUseCase.updateTacos(t);
         return new RedirectView("/");
     }
+=======
+>>>>>>> c939e8b192154d44568e9bfaff9f213181afbe09
 }
