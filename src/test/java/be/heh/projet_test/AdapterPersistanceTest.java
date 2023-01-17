@@ -69,5 +69,23 @@ public class AdapterPersistanceTest extends AbstractIntegrationTest {
         assertEquals("supp",tacos.get(0).getSupp());
         assertEquals(5,tacos.get(0).getPrix());
     }
+    @Test
+    @Sql({"createTacosTable.sql","dataTacos.sql"})
+    void deleteTacosTest(){
+        tacosMapper = new TacosMapper();
+        tacosPersistenceAdapter = new TacosPersistanceAdapter(tacosRepository,tacosMapper);
+        int numberOfTacos;
+
+        List<Tacos> tacos;
+        tacos = tacosPersistenceAdapter.getTacosList();
+        numberOfTacos = tacos.size();
+        System.out.println("NOMBRE AVANT : " + numberOfTacos);
+        tacos.clear();
+        tacosPersistenceAdapter.deleteTacos(1);
+
+        tacos = tacosPersistenceAdapter.getTacosList();
+        numberOfTacos = tacos.size();
+        System.out.println("NOMBRE APRES : " + numberOfTacos);
+    }
 
 }
