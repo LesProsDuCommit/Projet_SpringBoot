@@ -27,4 +27,23 @@ public class TacosPersistanceAdapter implements TacosListUseCase {
     public void deleteTacos(int id) {
         tacosRepository.deleteById(id);
     }
+
+    @Override
+    public Tacos getTacosById(int id) {
+        TacosJpaEntity t = tacosRepository.getById(id);
+        Tacos taco = new Tacos(t.getId_tacos(), t.getNom(), t.getTaille(), t.getViande(), t.getSauce(), t.getSupp(), t.getPrix());
+        return taco;
+    }
+
+    @Override
+    public void updateTacos(Tacos t) {
+        TacosJpaEntity tacos = tacosRepository.getById(t.getId());
+        tacos.setNom(t.getNom());
+        tacos.setTaille(t.getTaille());
+        tacos.setViande(t.getViande());
+        tacos.setSauce(t.getSauce());
+        tacos.setSupp(t.getSupp());
+        tacos.setPrix(t.getPrix());
+        tacosRepository.save(tacos);
+    }
 }
