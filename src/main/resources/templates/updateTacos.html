@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>HEH Tacos</title>
+</head>
+<body>
+<h1>Mode Édition : </h1>
+<style type="text/css">
+    .tftable {font-size:12px;color:#333333;width:100%;border-width: 1px;border-color: #ebab3a;border-collapse: collapse; text-align: center; font-size: 1.5rem;}
+    .tftable th {font-size:24px;background-color:#e6983b;border-width: 1px;padding: 8px;border-style: solid;border-color: #ebab3a;text-align:center;}
+    .tftable tr {background-color:#f0c169;}
+    .tftable td {font-size:18px;border-width: 1px;padding: 8px;border-style: solid;border-color: #ebab3a;}
+    html{
+        background-color: rgb(53,53,53);
+        color:white;
+    }
+    h1{
+        text-align:center;
+        margin-bottom:50px;
+    }
+</style>
+<div style="display: flex; flex-direction: row; justify-content: center">
+    <div>
+        <form name="updatetacos" method="post" th:action="@{/updatetacos/confirm}">
+            <table class="tftable" border="1">
+                <tr>
+                    <th></th>
+                    <th>Anciennes données</th>
+                    <th>Nouvelles données</th>
+                </tr>
+                <tr>
+                    <td>ID</td>
+                    <td th:text="${tacos.getId}"></td>
+                    <td><input name="id" th:value="${tacos.getId}" style="display: none"/></td>
+                </tr>
+                <tr>
+                    <td>NOM</td>
+                    <td th:text="${tacos.getNom}"></td>
+                    <td><input name="nom" required/></td>
+                </tr>
+                <tr>
+                    <td>TAILLE</td>
+                    <td th:text="${tacos.getTaille}"></td>
+                    <td><input name="taille" required/></td>
+                </tr>
+                <tr>
+                    <td>VIANDE</td>
+                    <td th:text="${tacos.getViande}"></td>
+                    <td><input name="viande" required/></td>
+                </tr>
+                <tr>
+                    <td>SAUCE</td>
+                    <td th:text="${tacos.getSauce}"></td>
+                    <td><input name="sauce" required/></td>
+                </tr>
+                <tr>
+                    <td>SUPPLÉMENTS</td>
+                    <td th:text="${tacos.getSupp}"></td>
+                    <td><input name="supp" required/></td>
+                </tr>
+                <tr>
+                    <td>PRIX</td>
+                    <td th:text="${tacos.getPrix} + '€'"></td>
+                    <td><input name="prix" required/></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td><input type="submit" value="Éditer"/></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+</body>
+</html>

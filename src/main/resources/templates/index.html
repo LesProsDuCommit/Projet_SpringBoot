@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>HEH Tacos</title>
+    <style>
+        html{
+            background-color: rgb(53,53,53);
+            color:white;
+        }
+        table{
+            width:100%;
+        }
+        h2{
+            text-transform:uppercase;
+            margin-left: 50px;
+        }
+        tbody{
+        }
+        tr{
+            display:flex;
+            justify-content: space-around;
+            background-color : orange;
+            margin-top:10px;
+        }
+        th, td{
+            padding:12px;
+            width:200px;
+            border:5px solid rgb(53,53,53);
+
+        }
+        th{
+            font-size:1.5rem;
+            text-transform:uppercase;
+            color:rgb(53,53,53);
+        }
+        td{
+            text-align:center;
+            font-size:1.2rem;
+            color:rgb(53,53,53);
+            align-items :center;
+        }
+        td a {
+            background-color:rgb(53,53,53);
+            width:200px;
+            padding:7px;
+            color:white;
+            text-decoration:none;
+        }
+        h2{
+            text-align : center;
+            margin-top:50px;
+            margin-bottom:0px;
+
+        }
+        form{
+            margin-top:10px;
+            display:flex;
+            align-items: center;
+            flex-direction: column;
+            flex-wrap: wrap;
+        }
+        input{
+            margin-top:15px;
+            margin-left:15px;
+            width:300px;
+            height:30px;
+            background-color:rgb(53,53,53);
+            color:white;
+            border-radius: 15px ;
+            border : 3px solid orange;
+            padding-left:10px;
+            padding-top:5px;
+            padding-bottom:5px;
+        }
+        ::placeholder{
+            color : #fff ;
+        }
+    </style>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>Nom du tacos</th>
+        <th>Taille</th>
+        <th>Viande</th>
+        <th>Sauce</th>
+        <th>Supplément</th>
+        <th>Prix</th>
+        <div sec:authorize="isAuthenticated()">
+            <th>Action</th>
+        </div>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="taco : ${tacos}">
+        <td th:text="${taco.getNom}"></td>
+        <td th:text="${taco.getTaille}"></td>
+        <td th:text="${taco.getViande}"></td>
+        <td th:text="${taco.getSauce}"></td>
+        <td th:text="${taco.getSupp}"></td>
+        <td th:text='${taco.getPrix}'></td>
+        <div sec:authorize="isAuthenticated()">
+            <td>
+                <a th:href="@{'/deletetacos/' + ${taco.getId}}">Supprimer</a>
+                <a th:href="@{'/updatetacos/' + ${taco.getId}}">Modifier</a>
+            </td>
+        </div>
+    </tr>
+    </tbody>
+</table>
+<div>
+    <form method="post" name="addTacos" action="/addTacos">
+        <input name="id" placeholder="id" value="0" style="display: none" required/><br>
+        <input name="nom" placeholder="nom" required/><br>
+        <input name="taille" placeholder="taille" required/><br>
+        <input name="viande" placeholder="viande" required/><br>
+        <input name="sauce" placeholder="sauce" required/><br>
+        <input name="supp" placeholder="supp" required/><br>
+        <input name="prix" placeholder="prix" min="0" required/><br>
+        <input type="submit"/>
+    </form>
+</div>
+<div sec:authorize="!isAuthenticated()">
+    <a th:href="@{/oauth2/authorization/auth0}">Log In</a>
+</div>
+<div sec:authorize="isAuthenticated()">
+    <a th:href="@{/logout}">Log Out</a>
+</div>
+</body>
+</html>
