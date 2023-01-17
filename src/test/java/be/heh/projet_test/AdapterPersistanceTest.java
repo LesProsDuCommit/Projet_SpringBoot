@@ -87,7 +87,6 @@ public class AdapterPersistanceTest extends AbstractIntegrationTest {
         numberOfTacos = tacos.size();
         System.out.println("NOMBRE APRES : " + numberOfTacos);
     }
-<<<<<<< HEAD
 
     @Test
     @Sql({"createTacosTable.sql","dataTacos.sql"})
@@ -107,7 +106,5 @@ public class AdapterPersistanceTest extends AbstractIntegrationTest {
             System.out.println("Test réussi, update validé !");
         }
     }
-=======
->>>>>>> c939e8b192154d44568e9bfaff9f213181afbe09
 
 }
