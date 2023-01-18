@@ -11,12 +11,6 @@
         table{
             width:100%;
         }
-        h2{
-            text-transform:uppercase;
-            margin-left: 50px;
-        }
-        tbody{
-        }
         tr{
             display:flex;
             justify-content: space-around;
@@ -38,7 +32,7 @@
             text-align:center;
             font-size:1.2rem;
             color:rgb(53,53,53);
-            align-items :center;
+
         }
         td a {
             background-color:rgb(53,53,53);
@@ -47,34 +41,20 @@
             color:white;
             text-decoration:none;
         }
-        h2{
-            text-align : center;
+        .btn_div {
+            display: flex;
+            justify-content: center;
+        }
+        .btn_a {
+            border : 5px solid orange;
+            border-radius : 15px;
+            text-align: center;
             margin-top:50px;
-            margin-bottom:0px;
-
-        }
-        form{
-            margin-top:10px;
-            display:flex;
-            align-items: center;
-            flex-direction: column;
-            flex-wrap: wrap;
-        }
-        input{
-            margin-top:15px;
-            margin-left:15px;
-            width:300px;
-            height:30px;
-            background-color:rgb(53,53,53);
+            width:200px;
+            padding:7px;
             color:white;
-            border-radius: 15px ;
-            border : 3px solid orange;
-            padding-left:10px;
-            padding-top:5px;
-            padding-bottom:5px;
-        }
-        ::placeholder{
-            color : #fff ;
+            text-decoration:none;
+            font-size: x-large;
         }
     </style>
 </head>
@@ -101,7 +81,7 @@
         <td th:text="${taco.getSauce}"></td>
         <td th:text="${taco.getSupp}"></td>
         <td th:text='${taco.getPrix}'></td>
-        <div sec:authorize="isAuthenticated()">
+        <div th:if="${user.getEmail() == 'alexdeneve@hotmail.be'}" sec:authorize="isAuthenticated()">
             <td>
                 <a th:href="@{'/deletetacos/' + ${taco.getId}}">Supprimer</a>
                 <a th:href="@{'/updatetacos/' + ${taco.getId}}">Modifier</a>
@@ -110,23 +90,14 @@
     </tr>
     </tbody>
 </table>
-<div>
-    <form method="post" name="addTacos" action="/addTacos">
-        <input name="id" placeholder="id" value="0" style="display: none" required/><br>
-        <input name="nom" placeholder="nom" required/><br>
-        <input name="taille" placeholder="taille" required/><br>
-        <input name="viande" placeholder="viande" required/><br>
-        <input name="sauce" placeholder="sauce" required/><br>
-        <input name="supp" placeholder="supp" required/><br>
-        <input name="prix" placeholder="prix" min="0" required/><br>
-        <input type="submit"/>
-    </form>
+<div class="btn_div" th:if="${user.getEmail() == 'alexdeneve@hotmail.be'}" sec:authorize="isAuthenticated()">
+    <a class="btn_a" th:href="@{'/addTacosView/'}">Ajouter un tacos</a>
 </div>
-<div sec:authorize="!isAuthenticated()">
-    <a th:href="@{/oauth2/authorization/auth0}">Log In</a>
+<div class="btn_div" sec:authorize="!isAuthenticated()">
+    <a class="btn_a" th:href="@{/oauth2/authorization/auth0}">Log In</a>
 </div>
-<div sec:authorize="isAuthenticated()">
-    <a th:href="@{/logout}">Log Out</a>
+<div class="btn_div" sec:authorize="isAuthenticated()">
+    <a class="btn_a" th:href="@{/logout}">Log Out</a>
 </div>
 </body>
 </html>

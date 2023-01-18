@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>HEH Tacos</title>
+  <style>
+    html{
+      background-color: rgb(53,53,53);
+      color:white;
+    }
+    h2{
+      text-transform:uppercase;
+      margin-left: 50px;
+      text-align : center;
+      margin-top:50px;
+      margin-bottom:0px;
+
+    }
+    form{
+      margin-top:10px;
+      display:flex;
+      align-items: center;
+      flex-direction: column;
+    }
+    input{
+      margin-top:15px;
+      margin-left:15px;
+      width:300px;
+      height:30px;
+      background-color:rgb(53,53,53);
+      color:white;
+      border-radius: 15px ;
+      border : 3px solid orange;
+      padding-left:10px;
+      padding-top:5px;
+      padding-bottom:5px;
+    }
+    ::placeholder{
+      color : #fff ;
+      font-size: large;
+    }
+    #btn_div {
+      display: flex;
+      justify-content: center;
+      text-align: center;
+    }
+    #btn_a {
+      margin-top:15px;
+      margin-left:15px;
+      width:300px;
+      height: 30px;
+      color:white;
+      border-radius: 15px ;
+      border : 3px solid orange;
+      text-decoration: none;
+      padding:0px;
+    }
+  </style>
+</head>
+<body>
+<h2> Ajouter un tacos </h2>
+<form method="post" name="addTacos" action="/addTacos">
+  <input name="id" placeholder="id" value="0" style="display: none" required/><br>
+  <input name="nom" placeholder="nom" required/><br>
+  <input name="taille" placeholder="taille" required/><br>
+  <input name="viande" placeholder="viande" required/><br>
+  <input name="sauce" placeholder="sauce" required/><br>
+  <input name="supp" placeholder="supp" required/><br>
+  <input name="prix" placeholder="prix" min="0" type="number" required/><br>
+  <input type="submit"/>
+</form>
+<div id="btn_div">
+  <a id="btn_a" th:href="@{'/'}">index</a>
+</div>
+</body>
+</html>

@@ -19,7 +19,11 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-
+        http.cors().and().csrf().disable();
+        http.authorizeRequests().mvcMatchers("/updatetacos/*").authenticated();
+        http.authorizeRequests().mvcMatchers("/deletetacos/*").authenticated();
+        http.authorizeRequests().mvcMatchers("/addTacos").authenticated();
+        http.authorizeRequests().mvcMatchers("/addTacosView/").authenticated();
         return http
                 .oauth2Login()
                 .and().logout()

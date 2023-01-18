@@ -37,32 +37,32 @@
                 <tr>
                     <td>NOM</td>
                     <td th:text="${tacos.getNom}"></td>
-                    <td><input name="nom" required/></td>
+                    <td><input name="nom" th:value="${tacos.getNom}" required/></td>
                 </tr>
                 <tr>
                     <td>TAILLE</td>
                     <td th:text="${tacos.getTaille}"></td>
-                    <td><input name="taille" required/></td>
+                    <td><input name="taille" th:value="${tacos.getTaille}" required/></td>
                 </tr>
                 <tr>
                     <td>VIANDE</td>
                     <td th:text="${tacos.getViande}"></td>
-                    <td><input name="viande" required/></td>
+                    <td><input name="viande" th:value="${tacos.getViande}" required/></td>
                 </tr>
                 <tr>
                     <td>SAUCE</td>
                     <td th:text="${tacos.getSauce}"></td>
-                    <td><input name="sauce" required/></td>
+                    <td><input name="sauce" th:value="${tacos.getSauce}" required/></td>
                 </tr>
                 <tr>
                     <td>SUPPLÉMENTS</td>
                     <td th:text="${tacos.getSupp}"></td>
-                    <td><input name="supp" required/></td>
+                    <td><input name="supp" th:value="${tacos.getSupp}" required/></td>
                 </tr>
                 <tr>
                     <td>PRIX</td>
                     <td th:text="${tacos.getPrix} + '€'"></td>
-                    <td><input name="prix" required/></td>
+                    <td><input name="prix" th:value="${tacos.getPrix}" required/></td>
                 </tr>
                 <tr>
                     <td></td>
